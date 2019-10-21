@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  name  = 'Esther';
+  text = '';
+  date = [];
+  setPosition: any;
+
+
   constructor() { }
 
-  ngOnInit() {
+  setName() {
+    this.name = 'Stephen';
   }
 
+  setText() {
+    this.text ='new user added';
+  }
+
+  getDetails() {
+    this.date.push(new Date())
+    if(window.navigator.geolocation){
+      window.navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+      };
+  }
+
+  ngOnInit() {
+      }
 }

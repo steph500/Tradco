@@ -3,11 +3,30 @@
         <app-topheader></app-topheader>
         <app-middleheader></app-middleheader>
         <app-bottomheader></app-bottomheader>
-    </div>
+        <div class = "body">
+            <h1>Welcome {{ name }}</h1>
+            <div class="container">
+                <input 
+                type="button"
+                class="form-control"
+                value = "click me"
+                (click)= "setName()"><br>
 
+            </div>
+                <input type="text"
+                [(ngModel)]="text">
 
+                <p >{{ text }}</p>
+            <input type="button"
+            value="Get Details"
+            (click)="getDetails()">
+            <div
+            *ngFor="let dateItem of date">
+            {{ dateItem }}
+            </div>
+            <p>{{ setPosition }}</p>
 
-
+        </div>
     <div class = "footer">
         <app-footer></app-footer>    
     </div>
