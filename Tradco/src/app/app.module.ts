@@ -13,7 +13,8 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire'; 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-
+import { JobsComponent } from './home/jobs/jobs.component';
+import { JobsService } from './jobs.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     BottomheaderComponent,
     LoginComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    JobsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireModule.initializeApp(environment.firebase, 'Tradco'),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [ JobsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

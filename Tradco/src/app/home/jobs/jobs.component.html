@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-1 md8">
+            <h5>The user will select the jobs here</h5>
+        </div>
+        <div class="col-2">
+                <ul *ngFor="let jobs of job">
+                    <span (click)="onClick(job)"> You have {{ jobs.name }} waiting for you!</span>
+                </ul>
+        </div>
+    </div>
+   
+</div>
