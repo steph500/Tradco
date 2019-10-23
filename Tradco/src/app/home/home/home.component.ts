@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router'
+import { EventEmitter } from 'events';
+import { JobsService } from '../../jobs.service'
+
 
 @Component({
   selector: 'app-home',
@@ -6,21 +10,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @Output() onClicked = new EventEmitter()
+
 
   name  = 'Esther';
-  text = '';
   date = [];
   setPosition: any;
+  job = [];
 
 
-  constructor() { }
+  constructor(
+    private route:ActivatedRoute,
+    private jobService:JobsService
+
+  ) { }
 
   setName() {
     this.name = 'Stephen';
   }
 
-  setText() {
-    this.text ='new user added';
+  onClick(value) {
+    //alert('please take a picture before taking the survey')
+    this.onClicked.emit(value)
+    
+  }
+
+
+  loadJob() {
+    this.job = this.jobService.getJobs()
+    //const jobId = this.route.snapshot.paramMap.get('id');
+
   }
 
   getDetails() {
@@ -31,5 +50,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-      }
+    this.loadJob();
+
+  }
 }
