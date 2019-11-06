@@ -1,8 +1,10 @@
 <div class= "container">
-    <div class = "headers">
-        <app-topheader></app-topheader>
-        <app-middleheader></app-middleheader>
-        <app-bottomheader></app-bottomheader>
+    <div class = "row">
+        <div class=".col-md-8 col-lg-12 mx-auto">
+            <app-topheader></app-topheader>
+            <app-middleheader></app-middleheader>
+            <app-bottomheader></app-bottomheader>
+        </div>  
         <div class = "body">
             <h1>Welcome {{ name }}</h1>
             <div class="container">
@@ -29,13 +31,13 @@
                 <div class="col center">
                     <div class="container">
                         <div class="row">
-                            <div class="col-1 md8">
+                            <div class="col-1">
                                 <h5>The user will select the jobs here</h5>
                             </div>
-                            <div class="col-2">
+                            <div class="col-1">
                                 <ul *ngFor="let jobs of job"
                                     [routerLink]="['/jobs',jobs.id]">
-                                    <span (click)="onClick(job)"> You have {{ jobs.name }} of id {{ jobs.id }} waiting for you!</span>
+                                    <span (click)="onClick(job)"> You have {{ jobs.name }} of id {{ jobs.id }} waiting for you!</span><br><br>
                                 </ul>          
                             </div>
                         </div>
@@ -52,6 +54,7 @@
             
 
         </div>
+    </div>
     <div class = "footer">
         <app-footer></app-footer>    
     </div>

@@ -1,1 +1,26 @@
-<h3>You selected job: {{ jobId }}<h3>
+<div class="container">
+    <div class="header">
+        <div class="row">
+                <app-topheader></app-topheader>
+                <app-middleheader></app-middleheader>
+                <app-bottomheader></app-bottomheader>
+        </div>
+    </div>
+    <div class="body">
+            <h3>You selected job: {{ jobId }}</h3>
+        <h4>{{ productTitle }}</h4><br>
+        <form action="" method="get">
+            <p>Where is this survey being conducted ?</p>
+            <input type="text">
+            <p> Quantity of {{ productTitle }} in stock : </p>
+            <input type="text">
+            <p>Quantity of {{ productTitle }} out of stock :</p>
+            <input type="text">
+            <p>Comments </p>
+            <input type="text">
+        </form>
+    </div>
+    <div class="footer">
+        <app-footer></app-footer>    
+    </div>
+</div>

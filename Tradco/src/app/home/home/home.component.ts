@@ -30,9 +30,9 @@ export class HomeComponent implements OnInit {
   }
 
   onClick(value) {
-    //alert('please take a picture before taking the survey')
+    alert('please take a picture before taking the survey')
     this.onClicked.emit(value)
-    
+    this.getDetails();
   }
 
 
