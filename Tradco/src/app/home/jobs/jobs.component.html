@@ -9,16 +9,20 @@
     <div class="body">
             <h3>You selected job: {{ jobId }}</h3>
         <h4>{{ productTitle }}</h4><br>
-        <form action="" method="get">
-            <p>Where is this survey being conducted ?</p>
-            <input type="text">
-            <p> Quantity of {{ productTitle }} in stock : </p>
-            <input type="text">
-            <p>Quantity of {{ productTitle }} out of stock :</p>
-            <input type="text">
-            <p>Comments </p>
-            <input type="text">
-        </form>
+        <div class="row">
+            <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+                <input name="organisationName" #organisationName="ngModel" [(ngModel)]="service.formData.organisationName" class="form-control" placeholder="Organisation Name" required>
+                <div *ngIf="organisationName.invalid && organisationName.touched" class="validation-error">This field is required.</div>
+                <input name="inStock" #inStock="ngModel" [(ngModel)]="service.formData.inStock" class="form-control" placeholder="In Stock" required>
+                <div *ngIf="inStock.invalid && inStock.touched" class="validation-error">This field is required.</div>
+                <input name="outStock" #outStock="ngModel" [(ngModel)]="service.formData.outStock" class="form-control" placeholder="Out Stock" required>
+                <div *ngIf="outStock.invalid && outStock.touched" class="validation-error">This field is required.</div>
+                <input name="comments" #comments="ngModel" [(ngModel)]="service.formData.comments" class="form-control" placeholder="Comments">
+                <div class="form-group">
+                    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="footer">
         <app-footer></app-footer>    

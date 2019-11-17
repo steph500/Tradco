@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router'
 import { EventEmitter } from 'events';
 import { JobsService } from '../../jobs.service'
+import { AngularFirestore } from 'angularfire2/firestore';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute,
-    private jobService:JobsService
+    private jobService:JobsService,
+    private firestore:AngularFirestore
 
   ) { }
 
@@ -35,13 +37,6 @@ export class HomeComponent implements OnInit {
     this.getDetails();
   }
 
-
-  loadJob() {
-    this.job = this.jobService.getJobs()
-    //const jobId = this.route.snapshot.paramMap.get('id');
-
-  }
-
   getDetails() {
     this.date.push(new Date())
     if(window.navigator.geolocation){
@@ -49,8 +44,16 @@ export class HomeComponent implements OnInit {
       };
   }
 
-  ngOnInit() {
-    this.loadJob();
+  getJob() {
+    return this.firestore.collection('Jobs').snapshotChanges();
+  }
 
+  ngOnInit() {
+    //this.jobService.getJobs()
+    //  .subscribe(data => this.job = data );
+
+    this.getJob()
+    .subscribe(data => this.job = data );
+    console.log(this.job)
   }
 }
