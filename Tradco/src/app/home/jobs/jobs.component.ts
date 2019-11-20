@@ -4,6 +4,7 @@ import { JobsService } from '../../jobs.service';
 import { parse } from 'querystring';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class JobsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private service: JobsService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private toastr: ToastrService
   ) { }
   
   ngOnInit() {
@@ -54,5 +56,6 @@ export class JobsComponent implements OnInit {
     let data = form.value;
     this.firestore.collection('Jobs').add(data);
     this.resetForm(form);
+    this.toastr.success('Submitted successfully', 'JOBS');
   }
 }

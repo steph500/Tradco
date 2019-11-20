@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-5">
+       <h1 class="display-4">JOBS</h1>
+       <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+           <div class="form-group">
+                <input name="jobName" #jobName="ngModel" [(ngModel)]="service.formData.jobName" class="form-control" placeholder="Job Name" required>
+                <div *ngIf="jobName.invalid && jobName.touched" class="validation-error">This field is required.</div>
+            </div>
+                <input name="employeeName" #employeeName="ngModel" [(ngModel)]="service.formData.employeeName" class="form-control" placeholder="Employee Name" required>
+                <div *ngIf="employeeName.invalid && employeeName.touched" class="validation-error">This field is required.</div>
+            <div class="form-group">
+                <input name="organisationName" #organisationName="ngModel" [(ngModel)]="service.formData.organisationName" class="form-control" placeholder="Organisation Name" required>
+                <div *ngIf="organisationName.invalid && organisationName.touched" class="validation-error">This field is required.</div>
+            </div>
+            <div class="form-group">
+                <input name="inStock" #inStock="ngModel" [(ngModel)]="service.formData.inStock" class="form-control" placeholder="In Stock" required>
+                <div *ngIf="inStock.invalid && inStock.touched" class="validation-error">This field is required.</div>
+            </div>
+            <div class="form-group">
+                <input name="outStock" #outStock="ngModel" [(ngModel)]="service.formData.outStock" class="form-control" placeholder="Out Stock" required>
+                <div *ngIf="outStock.invalid && outStock.touched" class="validation-error">This field is required.</div>
+            </div>
+            <div class="form-group">
+                <input name="comments" #comments="ngModel" [(ngModel)]="service.formData.comments" class="form-control" placeholder="Comments">
+            </div>
+                <div class="form-group">
+                    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+            </div>
+       </form>
+    </div>
+    <div class="col-md-7">
+        <table class="table table-hover">
+            <thead>
+                <th>Job Name</th>
+                <th> Employee Name</th>
+                <th>Organization Name</th>
+                <th>Date and Time</th>
+                <th>In Stock</th>
+                <th>Out Stock</th>
+                <th>Comments</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let jobs of list">
+                <td>{{jobs.jobsCode}} - {{jobs.jobName}}</td>
+                <td>{{jobs.employeeName}}</td>
+                <td>{{jobs.organisationName}}</td>
+                <td>{{jobs.date}}</td>
+                <td>{{jobs.inStock}}</td>
+                <td>{{jobs.outStock}}</td>
+                <td>{{jobs.comments}}</td>
+                `   <td><a class="btn text-danger" (click)="onDelete(jobs.id)"><i class="fa fa-trash"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

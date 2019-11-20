@@ -26,6 +26,13 @@
             *ngFor="let dateItem of date">
             {{ dateItem }}
             </div>
+            <div>
+                <p>This link goes to the admins page. so make sure to remove it</p>
+                <input type = "submit"
+                 value = "admin" 
+                 routerLink="/admin"
+                 routerLinkActive="active"/>
+            </div>  
             <p>{{ setPosition }}</p>
             <div class="row">
                 <div class="col center">
