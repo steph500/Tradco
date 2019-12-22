@@ -10,15 +10,12 @@
                 <div *ngIf="employeeName.invalid && employeeName.touched" class="validation-error">This field is required.</div>
             <div class="form-group">
                 <input name="organisationName" #organisationName="ngModel" [(ngModel)]="service.formData.organisationName" class="form-control" placeholder="Organisation Name" required>
-                <div *ngIf="organisationName.invalid && organisationName.touched" class="validation-error">This field is required.</div>
             </div>
             <div class="form-group">
                 <input name="inStock" #inStock="ngModel" [(ngModel)]="service.formData.inStock" class="form-control" placeholder="In Stock" required>
-                <div *ngIf="inStock.invalid && inStock.touched" class="validation-error">This field is required.</div>
             </div>
             <div class="form-group">
                 <input name="outStock" #outStock="ngModel" [(ngModel)]="service.formData.outStock" class="form-control" placeholder="Out Stock" required>
-                <div *ngIf="outStock.invalid && outStock.touched" class="validation-error">This field is required.</div>
             </div>
             <div class="form-group">
                 <input name="comments" #comments="ngModel" [(ngModel)]="service.formData.comments" class="form-control" placeholder="Comments">
@@ -41,13 +38,12 @@
             </thead>
             <tbody>
                 <tr *ngFor="let jobs of list">
-                <td>{{jobs.jobsCode}} - {{jobs.jobName}}</td>
-                <td>{{jobs.employeeName}}</td>
-                <td>{{jobs.organisationName}}</td>
-                <td>{{jobs.date}}</td>
-                <td>{{jobs.inStock}}</td>
-                <td>{{jobs.outStock}}</td>
-                <td>{{jobs.comments}}</td>
+                <td (click)="onEdit(jobsCode)">{{jobs.jobsCode}} - {{jobs.jobName}}</td>
+                <td (click)="onEdit(jobsCode)">{{jobs.employeeName}}</td>
+                <td (click)="onEdit(jobsCode)">{{jobs.organisationName}}</td>
+                <td (click)="onEdit(jobsCode)">{{jobs.inStock}}</td>
+                <td (click)="onEdit(jobsCode)">{{jobs.outStock}}</td>
+                <td (click)="onEdit(jobsCode)">{{jobs.comments}}</td>
                 `   <td><a class="btn text-danger" (click)="onDelete(jobs.id)"><i class="fa fa-trash"></i></a></td>
                 </tr>
             </tbody>

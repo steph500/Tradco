@@ -5,6 +5,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -43,6 +44,10 @@ export class AdminComponent implements OnInit {
       this.firestore.doc('Jobs/' + id ).delete();
       this.toastr.warning('Deleated successfully', 'JOB RECORD')
     }
+  }
+
+  onEdit(jobsCode :job){
+    this.service.formData = Object.assign({},jobsCode);
   }
 
   resetForm(form? : NgForm){
